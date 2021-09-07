@@ -1,12 +1,14 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { Home } from '../pages/Home';
+import Login from '../pages/Login';
+import CloseRoutes from './closeRoutes';
 
 export function Routes() {
   return (
     <Switch>
-      <Route path='/' exact component={Home} />
-      <Route path='/login' exact component={Home} />
+      <CloseRoutes path='/' exact component={Home} isCLosed={false} />
+      <CloseRoutes path='/login' exact component={Login} isCLosed={false} />
     </Switch>
   );
 }
