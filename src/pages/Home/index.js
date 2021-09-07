@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import api from '../../services/axios';
 import Loading from '../../components/Loading';
@@ -29,12 +30,20 @@ export function Home() {
               key={recents.id}
             >
               <p
-                className='text-gray-500 w-full mb-3 text-center'
+                className='text-gray-500 w-full mb-3 text-center no-underline'
                 dangerouslySetInnerHTML={{ __html: recents.resume }}
               />
-              <h3 className='text-xl font-medium text-black p-3 text-center'>
-                {recents.title}
-              </h3>
+              <Link
+                to={`/${recents.id}/${recents.title_url}`}
+                className='flex justify-center'
+              >
+                <button
+                  type='button'
+                  className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-4 border border-black hover:border-transparent rounded  w-11/12 '
+                >
+                  Visualizar
+                </button>
+              </Link>
             </div>
           ))}
         </section>

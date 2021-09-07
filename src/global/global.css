@@ -16,6 +16,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a{
+  color:rgba(107, 114, 128, 1) !important;
+  text-decoration: none;
+}
 @layer utilities {
   @variants responsive {
       .masonry-3-col {
