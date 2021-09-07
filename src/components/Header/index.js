@@ -1,9 +1,22 @@
 import React from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoNewspaperOutline, IoSearchOutline } from 'react-icons/io5';
+import { FaPowerOff } from 'react-icons/fa';
+import * as actions from '../../store/models/auth/actions';
+import { history } from '../../services/history';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export function Header() {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  function handleLogout(e) {
+    e.preventDefault();
+    dispatch(actions.loginFailure());
+    history.push('/');
+  }
   return (
     <header role='banner' className='px-0 container mx-auto pt-6 mb-6'>
       <div className='flex-row flex justify-around'>
@@ -34,23 +47,35 @@ export function Header() {
           <IoNewspaperOutline color='#000' size={30} />
         </Link>
         <div className='flex flex-row'>
-          <Link to='/login'>
-            <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded mr-3'>
-              Login
-            </button>
-          </Link>
+          {isLoggedIn ? (
+            <>
+              <Link to='/'>
+                <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded ml-2'>
+                  Minha Conta
+                </button>
+              </Link>
 
-          <Link to='/'>
-            <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded'>
-              Registrar
-            </button>
-          </Link>
+              <Link to='/logout' onClick={handleLogout}>
+                <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded ml-2 flex'>
+                  <FaPowerOff size={16} className='mr-2 mt-1' /> Sair
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to='/login'>
+                <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded mr-3'>
+                  Login
+                </button>
+              </Link>
 
-          {/* <Link to='/'>
-            <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded ml-2'>
-              Minha Conta
-            </button>
-          </Link> */}
+              <Link to='/'>
+                <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded'>
+                  Registrar
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
