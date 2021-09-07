@@ -7,7 +7,7 @@ import api from '../../../services/axios';
 import { history } from '../../../services/history';
 function* loginRequest({ payload }) {
   try {
-    const response = yield call(api.post, '/tokens', payload);
+    const response = yield call(api.post, 'tokens', payload);
     yield put(actions.loginSuccess({ ...response.data }));
     toast.success('Logado com sucesso');
 
@@ -15,7 +15,7 @@ function* loginRequest({ payload }) {
 
     history.push('/');
   } catch (e) {
-    toast.error('E-mail ou senha inválido');
+    e.response.data.errors.map((err) => toast.error(err));
     yield put(actions.loginFailure());
   }
 }
