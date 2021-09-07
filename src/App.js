@@ -5,6 +5,7 @@ import { history } from './services/history';
 import { Routes } from './routes/mainRoutes';
 import { Header } from './components/Header';
 import { Provider } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
 import store from './store';
 export function App() {
   return (
