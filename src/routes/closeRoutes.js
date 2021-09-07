@@ -16,11 +16,11 @@ function CloseRoutes({ component: Component, isCLosed, ...rest }) {
 
   return <Route {...rest} component={Component} />;
 }
-MyRoute.defaultProps = {
+CloseRoutes.defaultProps = {
   isCLosed: false,
 };
 
-MyRoute.propTypes = {
+CloseRoutes.propTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
   isCLosed: PropTypes.bool,
