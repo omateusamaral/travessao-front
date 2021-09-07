@@ -7,6 +7,7 @@ import { history } from '../../services/history';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Logo from '../../assets/logo.png';
 
 export function Header() {
   const dispatch = useDispatch();
@@ -21,9 +22,9 @@ export function Header() {
     <header role='banner' className='px-0 container mx-auto pt-6 mb-6'>
       <div className='flex-row flex justify-around'>
         <img
-          src='https://img1.gratispng.com/20171221/shw/football-player-silhouette-png-transparent-clip-art-image-5a3c4af158d6d5.4261270915139007853639.jpg'
+          src={Logo}
           alt='icon'
-          className='h-20 w-20 justify-start xs:hidden lg:block'
+          className='h-20 w-20 justify-start xs:hidden lg:block bg-cover'
         />
 
         <Link className='flex flex-row ' to='/'>
