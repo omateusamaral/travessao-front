@@ -7,7 +7,6 @@ import { history } from '../../services/history';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
 
 export function Header() {
   const dispatch = useDispatch();
@@ -21,12 +20,6 @@ export function Header() {
   return (
     <header role='banner' className='px-0 container mx-auto pt-6 mb-6'>
       <div className='flex-row flex justify-around'>
-        <img
-          src={Logo}
-          alt='icon'
-          className='h-20 w-20 justify-start xs:hidden lg:block bg-cover'
-        />
-
         <Link className='flex flex-row ' to='/'>
           <AiOutlineHome color='#000' size={30} />
         </Link>
@@ -70,7 +63,7 @@ export function Header() {
                 </button>
               </Link>
 
-              <Link to='/'>
+              <Link to='/register'>
                 <button className='bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded'>
                   Registrar
                 </button>
