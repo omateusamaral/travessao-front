@@ -3,6 +3,8 @@ import { Switch } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import Login from '../pages/Login';
 import { Register } from '../pages/Register';
+import { News } from '../pages/News';
+
 import CloseRoutes from './closeRoutes';
 
 export function Routes() {
@@ -16,6 +18,7 @@ export function Routes() {
         component={Register}
         isCLosed={false}
       />
+      <CloseRoutes path='/news' exact component={News} isCLosed />
     </Switch>
   );
 }
