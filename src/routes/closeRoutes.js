@@ -2,11 +2,13 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 // essão função bloquea o acesso de usuário não autenticado a rotas privadas e redereciona para /login
 function CloseRoutes({ component: Component, isCLosed, ...rest }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   if (isCLosed && !isLoggedIn) {
+    toast.error('Faça login para acessar essa rota.');
     return (
       <Redirect
         to={{ pathname: '/login', state: { prevPath: rest.location.pathname } }}
