@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../store/models/user/register/actions';
 import { Link } from 'react-router-dom';
 import { Input } from '../../components/Input';
 export function Register() {
-  const [name, setName] = useState('');
+  const dispatch = useDispatch();
+  const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(actions.registerRequest({ username, email, password }));
+  }
   return (
     <main className='flex justify-center mt-20'>
       <div className=' shadow-md py-10  w-3/4 '>
@@ -12,12 +20,12 @@ export function Register() {
           Bem Vindo(a)
         </h1>
 
-        <form className='w-full'>
+        <form className='w-full' onSubmit={handleSubmit}>
           <Input
             type='text'
             placeholder='Seu Nome'
-            value={name}
-            changeValue={(e) => setName(e.target.value)}
+            value={username}
+            changeValue={(e) => setUserName(e.target.value)}
           />
 
           <Input
