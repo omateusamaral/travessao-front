@@ -37,7 +37,7 @@ export function Header() {
             />
           </span>
         </div>
-        <Link className='flex flex-row ' to='/'>
+        <Link className='flex flex-row ' to='/news'>
           <IoNewspaperOutline color='#000' size={30} />
         </Link>
         <div className='flex flex-row'>
