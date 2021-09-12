@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoNewspaperOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaPowerOff } from 'react-icons/fa';
-import * as actions from '../../store/models/auth/actions';
+import * as actions from '../../store/models/user/auth/actions';
 import { history } from '../../services/history';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';

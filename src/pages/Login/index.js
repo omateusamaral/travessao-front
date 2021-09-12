@@ -3,7 +3,7 @@ import validator from 'validator';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../store/models/auth/actions';
+import * as actions from '../../store/models/user/auth/actions';
 import { Input } from '../../components/Input';
 export default function Login() {
   const dispatch = useDispatch();
