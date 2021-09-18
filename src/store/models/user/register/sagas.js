@@ -5,8 +5,6 @@ import * as types from '../../types';
 import api from '../../../../services/axios';
 import { history } from '../../../../services/history';
 function* registerRequest({ payload }) {
-  console.log('aq');
-
   const { username, email, password } = payload;
   try {
     yield call(api.post, '/users', {
