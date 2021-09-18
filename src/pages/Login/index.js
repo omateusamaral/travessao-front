@@ -12,7 +12,6 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email);
     if (!validator.isEmail(email)) {
       toast.error('Email inválido');
     }
@@ -37,7 +36,7 @@ export default function Login() {
             type='password'
             placeholder='Senha'
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            changeValue={(e) => setPassword(e.target.value)}
           />
           <span className='flex flex-row justify-center'>
             <button
