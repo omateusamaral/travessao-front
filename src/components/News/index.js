@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 export function News({ news, loading }) {
   const foundNews = useSelector((state) => state.news.newsTyped);
 
-  console.log(foundNews);
   if (!Array.isArray(foundNews)) {
     news = Object.values(foundNews);
   }
