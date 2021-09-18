@@ -4,6 +4,7 @@ import { Home } from '../pages/Home';
 import Login from '../pages/Login';
 import { Register } from '../pages/Register';
 import { AllNews } from '../pages/News';
+import { Statistics } from '../pages/Statistics';
 
 import CloseRoutes from './closeRoutes';
 
@@ -18,7 +19,13 @@ export function Routes() {
         component={Register}
         isCLosed={false}
       />
-      <CloseRoutes path='/news' exact component={AllNews} isCLosed/>
+      <CloseRoutes path='/news' exact component={AllNews} isCLosed />
+      <CloseRoutes
+        path='/statistics'
+        exact
+        component={Statistics}
+        isCLosed={false}
+      />
     </Switch>
   );
 }
