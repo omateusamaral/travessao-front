@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoNewspaperOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaPowerOff } from 'react-icons/fa';
 import * as actions from '../../store/models/user/auth/actions';
+import * as actionsNews from '../../store/models/news/find/actions';
 import { history } from '../../services/history';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -11,11 +12,15 @@ import { Link } from 'react-router-dom';
 export function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
+  const [typedNews, setTypedNews] = useState('');
   function handleLogout(e) {
     e.preventDefault();
     dispatch(actions.loginFailure());
     history.push('/');
+  }
+  const newsTyped = useMemo(() => typedNews, [typedNews]);
+  function handleClick() {
+    dispatch(actionsNews.findRequest({ newsTyped }));
   }
   return (
     <header role='banner' className='px-0 container mx-auto pt-6 mb-6'>
@@ -29,11 +34,13 @@ export function Header() {
               className='bg-transparent text-gray-700 leading-tight focus:outline-none  h-10 px-0'
               type='text'
               placeholder='Digite uma notícia aqui'
+              onChange={(e) => setTypedNews(e.target.value)}
             />
             <IoSearchOutline
               color='rgba(156, 163, 175, 1)'
               size={30}
               className='cursor-pointer'
+              onClick={handleClick}
             />
           </span>
         </div>
