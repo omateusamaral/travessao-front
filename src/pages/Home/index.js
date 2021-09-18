@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import api from '../../services/axios';
-import {News} from '../../components/News';
+import { News } from '../../components/News';
 
 export function Home() {
   const [news, setNews] = useState([]);
@@ -28,5 +28,4 @@ export function Home() {
       <News news={news} loading={loading} />
     </main>
   );
- 
 }
