@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoNewspaperOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaPowerOff } from 'react-icons/fa';
-import { BiFootball } from 'react-icons/bi';
+import { AiOutlineSchedule } from 'react-icons/ai';
 
 import * as actions from '../../store/models/user/auth/actions';
 import * as actionsNews from '../../store/models/news/find/actions';
@@ -25,14 +25,54 @@ export function Header() {
     dispatch(actionsNews.findRequest({ newsTyped }));
   }
   return (
-    <header role='banner' className='px-0 container mx-auto pt-6 mb-6'>
-      <div className='flex-row flex justify-around'>
+    <header role='banner' className='px-0  container mx-auto pt-6 mb-6'>
+      <div className='flex-row flex lg:justify-evenly sm:justify-center md:justify-center  xl:justify-evenly xs:justify-center'>
         <Link className='flex flex-row ' to='/'>
           <AiOutlineHome color='#000' size={30} />
         </Link>
-        <Link className='flex flex-row ' to='/statistics'>
-          <BiFootball color='#000' size={30} />
-        </Link>
+
+        <div className='flex flex-row'>
+          <li className='dropdown inline px-4 text-purple-500 hover:text-purple-700 cursor-pointer font-bold text-base uppercase tracking-wide relative'>
+            <AiOutlineSchedule color='#000' size={30} />
+            <div className='dropdown-menu  absolute hidden h-auto pt-4'>
+              <ul className='block w-full bg-white shadow h-auto p-3'>
+                <li className='py-1'>
+                  <Link
+                    to='/statistics/brasileirao'
+                    className='block font-bold text-base uppercase hover:text-black cursor-pointer'
+                  >
+                    Tabela Brasileirão
+                  </Link>
+                </li>
+                <li className='py-1'>
+                  <Link
+                    to='/statistics/games'
+                    className='block font-bold text-base uppercase hover:text-black cursor-pointer'
+                  >
+                    últimos jogos
+                  </Link>
+                </li>
+                <li className='py-1'>
+                  <Link
+                    to='/statistics/champions'
+                    className='block font-bold text-base uppercase hover:text-black cursor-pointer'
+                  >
+                    Liga dos campeões
+                  </Link>
+                </li>
+                <li className='py-1'>
+                  <Link
+                    to='/statistics/pl'
+                    className='block font-bold text-base uppercase hover:text-black cursor-pointer'
+                  >
+                    Premiere League
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </div>
+
         <div>
           <span className='border-b-2 border-gray-400 lg:flex xl:flex 2xl:flex xs:hidden sm:hidden md:hidden'>
             <input

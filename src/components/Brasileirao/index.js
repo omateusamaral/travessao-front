@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import footballService from '../../services/footballService';
 import Loading from '../Loading';
+import { Table } from '../Table';
+import { Th } from '../Th';
+import { Td } from '../Td';
+import { Thead } from '../Thead';
+import { Tr } from '../Tr';
+import { TBody } from '../Tbody';
 
 export function Brasileirao() {
   const [tableMatches, setTableMatches] = useState([]);
@@ -23,45 +29,42 @@ export function Brasileirao() {
   }
 
   return (
-    <section>
-      <table className='shadow-lg w-1/6 h-1/6 mb-3 table-auto'>
-        <thead>
-          <tr>
-            <th className='bg-gray-100 border text-left px-4 py-4'>Clubes</th>
+    <Table>
+      <Thead>
+        <Tr>
+          <Th title='Clubes' />
+          <Th title='PTs' />
+          <Th title='PJ' />
+          <Th title='VIT' />
+          <Th title='ET' />
+          <Th title='DER' />
+          <Th title='GP' />
+          <Th title='GC' />
+          <Th title='SG' />
+        </Tr>
+      </Thead>
+      <TBody>
+        {tableMatches.table?.map((match, index) => (
+          <Tr key={index}>
+            <Td>
+              <span> {match.position}</span>
+              <img src={match.team.crestUrl} className='px-2 w-5/12' />
+              <span className='p-3'>{match.team.name}</span>
+            </Td>
 
-            <th className='bg-gray-100 border text-left px-4 py-4'>PTs</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>PJ</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>VIT</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>E</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>DER</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>GP</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>GC</th>
-            <th className='bg-gray-100 border text-left px-4 py-4'>SG</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableMatches.table?.map((match, index) => (
-            <tr key={index}>
-              <td className=' px-4 mt-1 flex flex-row'>
-                <span> {match.position}</span>
-                <img src={match.team.crestUrl} className='px-2 w-5/12' />
-                <span className='p-3'>{match.team.name}</span>
-              </td>
+            <Td>{match.points}</Td>
 
-              <td className=' px-4'>{match.points}</td>
+            <Td>{match.playedGames}</Td>
+            <Td>{match.won}</Td>
+            <Td>{match.draw}</Td>
+            <Td>{match.lost}</Td>
 
-              <td className=' px-4'>{match.playedGames}</td>
-              <td className=' px-4'>{match.won}</td>
-              <td className=' px-4'>{match.draw}</td>
-              <td className=' px-4'>{match.lost}</td>
-
-              <td className=' px-4'>{match.goalsFor}</td>
-              <td className=' px-4'>{match.goalsAgainst}</td>
-              <td className=' px-4'>{match.goalDifference}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
+            <Td>{match.goalsFor}</Td>
+            <Td>{match.goalsAgainst}</Td>
+            <Td>{match.goalDifference}</Td>
+          </Tr>
+        ))}
+      </TBody>
+    </Table>
   );
 }

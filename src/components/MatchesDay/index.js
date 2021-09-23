@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import footballService from '../../services/footballService';
 import Loading from '../Loading';
-
+import { Table } from '../Table';
+import { Th } from '../Th';
+import { Td } from '../Td';
+import { Thead } from '../Thead';
+import { TBody } from '../Tbody';
+import { Tr } from '../Tr';
 export function MatchesDay() {
   const [tableMatches, setTableMatches] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,48 +25,38 @@ export function MatchesDay() {
   }
 
   return (
-    <section>
-      <table className='shadow-lg w-11/12 h-1/6 mb-3 table-auto'>
-        <thead>
-          <tr>
-            <th className='bg-gray-100 border text-left px-8 py-4'>#</th>
-            <th className='bg-gray-100 border text-left px-8 py-4'>
-              Time Casa / Time Fora
-            </th>
-
-            <th className='bg-gray-100 border text-left px-8 py-4'>
-              Resultado
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableMatches.matches?.map((match) => (
-            <tr key={match.id}>
-              <th className=' px-8 py-4'>{match.id}</th>
-              <td className=' px-8 py-4'>
-                {match.homeTeam.name}
-                <span className='font-black px-2 '>VS</span>
-                {match.homeTeam.name}
-              </td>
-              <td className=' px-8 py-4'>
-                {match.score.fullTime.homeTeam === null
-                  ? '0'
-                  : match.score.fullTime.homeTeam}
-                {' : '}
-                {match.score.fullTime.awayTeam === null
-                  ? '0'
-                  : match.score.fullTime.awayTeam}
-                <span className='px-3'>
-                  -
-                  {match.status === 'FINISHED'
-                    ? ' Finalizado'
-                    : ' Em andamento'}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
+    <Table>
+      <Thead>
+        <Tr>
+          <Th title='#' />
+          <Th title='Time Casa / Time Fora' />
+          <Th title='Resultado' />
+        </Tr>
+      </Thead>
+      <TBody>
+        {tableMatches.matches?.map((match) => (
+          <Tr key={match.id}>
+            <Td>{match.id}</Td>
+            <Td>
+              {match.homeTeam.name}
+              <span className='font-black px-2 '>VS</span>
+              {match.awayTeam.name}
+            </Td>
+            <Td>
+              {match.score.fullTime.homeTeam === null
+                ? '0'
+                : match.score.fullTime.homeTeam}
+              {' : '}
+              {match.score.fullTime.awayTeam === null
+                ? '0'
+                : match.score.fullTime.awayTeam}
+              <span className='px-3'>
+                -{match.status === 'FINISHED' ? ' Finalizado' : ' Em andamento'}
+              </span>
+            </Td>
+          </Tr>
+        ))}
+      </TBody>
+    </Table>
   );
 }
