@@ -21,7 +21,7 @@ export function Routes() {
       />
       <CloseRoutes path='/news' exact component={AllNews} isCLosed />
       <CloseRoutes
-        path='/statistics'
+        path='/statistics/:table'
         exact
         component={Statistics}
         isCLosed={false}
