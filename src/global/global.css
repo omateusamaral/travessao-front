@@ -20,6 +20,10 @@ a{
   color:rgba(107, 114, 128, 1) !important;
   text-decoration: none;
 }
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 @layer utilities {
   @variants responsive {
       .masonry-3-col {
