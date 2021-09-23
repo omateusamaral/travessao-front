@@ -24,6 +24,11 @@ export function Header() {
   function handleClick() {
     dispatch(actionsNews.findRequest({ newsTyped }));
   }
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      dispatch(actionsNews.findRequest({ newsTyped }));
+    }
+  }
   return (
     <header role='banner' className='px-0  container mx-auto pt-6 mb-6'>
       <div className='flex-row flex lg:justify-evenly sm:justify-center md:justify-center  xl:justify-evenly xs:justify-center'>
@@ -32,10 +37,10 @@ export function Header() {
         </Link>
 
         <div className='flex flex-row'>
-          <li className='dropdown inline px-4 text-purple-500 hover:text-purple-700 cursor-pointer font-bold text-base uppercase tracking-wide relative'>
+          <li className='dropdown inline px-4 cursor-pointer font-bold text-base uppercase tracking-wide relative'>
             <AiOutlineSchedule color='#000' size={30} />
             <div className='dropdown-menu  absolute hidden h-auto pt-4'>
-              <ul className='block w-full bg-white shadow h-auto p-3'>
+              <ul className='block w-full bg-white shadow h-auto px-6'>
                 <li className='py-1'>
                   <Link
                     to='/statistics/brasileirao'
@@ -49,12 +54,12 @@ export function Header() {
                     to='/statistics/games'
                     className='block font-bold text-base uppercase hover:text-black cursor-pointer'
                   >
-                    últimos jogos
+                    últimos jogos Brasileirão
                   </Link>
                 </li>
                 <li className='py-1'>
                   <Link
-                    to='/statistics/champions'
+                    to='/statistics/cl'
                     className='block font-bold text-base uppercase hover:text-black cursor-pointer'
                   >
                     Liga dos campeões
@@ -80,6 +85,7 @@ export function Header() {
               type='text'
               placeholder='Digite uma notícia aqui'
               onChange={(e) => setTypedNews(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e)}
             />
             <IoSearchOutline
               color='rgba(156, 163, 175, 1)'
