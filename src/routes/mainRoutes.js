@@ -7,6 +7,7 @@ import { AllNews } from '../pages/News';
 import { Statistics } from '../pages/Statistics';
 
 import CloseRoutes from './closeRoutes';
+import { Videos } from '../pages/Videos';
 
 export function Routes() {
   return (
@@ -26,6 +27,8 @@ export function Routes() {
         component={Statistics}
         isCLosed={false}
       />
+
+      <CloseRoutes path='/videos' exact component={Videos} isCLosed={false} />
     </Switch>
   );
 }
