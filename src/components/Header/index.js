@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoNewspaperOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaPowerOff } from 'react-icons/fa';
-import { AiOutlineSchedule } from 'react-icons/ai';
+import { AiOutlineSchedule, AiOutlineYoutube } from 'react-icons/ai';
 
 import * as actions from '../../store/models/user/auth/actions';
 import * as actionsNews from '../../store/models/news/find/actions';
@@ -98,6 +98,10 @@ export function Header() {
 
         <Link className='flex flex-row ' to='/news'>
           <IoNewspaperOutline color='#000' size={30} />
+        </Link>
+
+        <Link className='flex flex-row ' to='/videos'>
+          <AiOutlineYoutube color='#000' size={30} />
         </Link>
         <div className='flex flex-row'>
           {isLoggedIn ? (
