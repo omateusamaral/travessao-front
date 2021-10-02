@@ -37,9 +37,9 @@ export function Header() {
         </Link>
 
         <div className='flex flex-row'>
-          <li className='dropdown inline px-4 cursor-pointer font-bold text-base uppercase tracking-wide relative'>
+          <li className='dropdown inline px-4 cursor-pointer font-bold text-base uppercase tracking-wide relative z-10'>
             <AiOutlineSchedule color='#000' size={30} />
-            <div className='dropdown-menu  absolute hidden h-auto pt-4'>
+            <div className='dropdown-menu  absolute hidden h-auto pt-4 '>
               <ul className='block w-full bg-white shadow h-auto px-6'>
                 <li className='py-1'>
                   <Link
