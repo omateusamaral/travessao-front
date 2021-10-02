@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import youtubeApi from '../../services/youtubeApi';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { YoutubeComponent } from '../../components/YoutubeComponent';
+import { SliderComponent } from '../../components/SliderComponent';
 export function Videos() {
   const [videos, setVideos] = useState([]);
   // const [advertisers, setAdvertisers] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  const settingsForSlider = {
-    dots: true,
-    lazyLoad: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    initialSlide: 2,
-    autoplay: true,
-    arrows: false,
-    slickPrev: false,
-  };
 
   useEffect(() => {
     async function getVideos() {
@@ -36,16 +22,7 @@ export function Videos() {
 
   return (
     <div className='mt-10'>
-      <Slider {...settingsForSlider}>
-        <img className='w-full' src='https://picsum.photos/920/250' />
-
-        <img className='w-full' src='https://picsum.photos/920/250' />
-
-        <img className='w-full' src='https://picsum.photos/920/250' />
-
-        <img className='w-full' src='https://picsum.photos/920/250' />
-      </Slider>
-
+      <SliderComponent />
       <div className='flex flex-col mb-28'>
         <h1 className='text-4xl sm:text-4xl text-center lg:text-4xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-2 sm:mt-14 sm:mb-2'>
           Conteúdo em vídeo
