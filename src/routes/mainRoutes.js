@@ -8,6 +8,7 @@ import { Statistics } from '../pages/Statistics';
 
 import CloseRoutes from './closeRoutes';
 import { Videos } from '../pages/Videos';
+import { Page404 } from '../pages/Page404';
 
 export function Routes() {
   return (
@@ -29,6 +30,7 @@ export function Routes() {
       />
 
       <CloseRoutes path='/videos' exact component={Videos} isCLosed={false} />
+      <CloseRoutes path='*' component={Page404} isCLosed={false} />
     </Switch>
   );
 }
